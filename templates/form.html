@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prediction Form | Heart Disease Prediction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar on-light">
+  <div class="container nav-inner">
+    <a href="{{ url_for('landing') }}" class="nav-logo">
+      <span class="logo-icon">&#10084;</span>
+      Heart Disease Prediction
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('landing') }}">Home</a>
+      <a href="{{ url_for('predict_form') }}">Prediction</a>
+      <a href="{{ url_for('landing') }}#about">About</a>
+    </div>
+  </div>
+</nav>
+
+<section class="form-page">
+  <div class="container">
+    <div class="form-card fade-up">
+      <div class="form-card-head">
+        <h2>Patient Information</h2>
+        <p>Please provide the following medical information. All fields are required.</p>
+      </div>
+
+      {% if error %}
+      <div class="disclaimer" style="border-color:#F3A6A6; background:#FFF0F0; color:#8C1A1A; margin-bottom:24px;">
+        &#9888;&#65039; {{ error }}
+      </div>
+      {% endif %}
+
+      <form id="prediction-form" action="{{ url_for('predict') }}" method="POST" novalidate>
+        <div class="field-grid">
+
+          <div class="field" data-field>
+            <label for="Age">&#129657; Age</label>
+            <input type="number" id="Age" name="Age" min="1" max="120" value="45" step="1" required>
+            <span class="hint">Years (1–120)</span>
+            <span class="error-msg">Please enter a valid age.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Gender">&#9877;&#65039; Sex</label>
+            <select id="Gender" name="Gender" required>
+              <option value="1" selected>Male</option>
+              <option value="0">Female</option>
+            </select>
+            <span class="error-msg">Please select an option.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Chest_Pain_Type">&#128137; Chest Pain Type</label>
+            <select id="Chest_Pain_Type" name="Chest_Pain_Type" required>
+              <option value="0" selected>Typical Angina</option>
+              <option value="1">Atypical Angina</option>
+              <option value="2">Non-anginal Pain</option>
+              <option value="3">Asymptomatic</option>
+            </select>
+            <span class="error-msg">Please select an option.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Resting_Blood_Pressure">&#128200; Resting Blood Pressure</label>
+            <input type="number" id="Resting_Blood_Pressure" name="Resting_Blood_Pressure" min="80" max="220" value="120" required>
+            <span class="hint">mm Hg</span>
+            <span class="error-msg">Please enter a valid value.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Cholesterol_Level">&#129502; Serum Cholesterol</label>
+            <input type="number" id="Cholesterol_Level" name="Cholesterol_Level" min="100" max="600" value="200" required>
+            <span class="hint">mg/dl</span>
+            <span class="error-msg">Please enter a valid value.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Fasting_Blood_Sugar">&#129503; Fasting Blood Sugar</label>
+            <select id="Fasting_Blood_Sugar" name="Fasting_Blood_Sugar" required>
+              <option value="0" selected>Below 120 mg/dl</option>
+              <option value="1">Above 120 mg/dl</option>
+            </select>
+            <span class="error-msg">Please select an option.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Resting_ECG_Result">&#128220; Resting ECG Results</label>
+            <select id="Resting_ECG_Result" name="Resting_ECG_Result" required>
+              <option value="0" selected>Normal</option>
+              <option value="1">ST-T Wave Abnormality</option>
+              <option value="2">Left Ventricular Hypertrophy</option>
+            </select>
+            <span class="error-msg">Please select an option.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Max_Heart_Rate">&#128147; Max Heart Rate Achieved</label>
+            <input type="number" id="Max_Heart_Rate" name="Max_Heart_Rate" min="60" max="220" value="150" required>
+            <span class="hint">Beats per minute</span>
+            <span class="error-msg">Please enter a valid value.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Exercise_Induced_Angina">&#127939; Exercise Induced Angina</label>
+            <select id="Exercise_Induced_Angina" name="Exercise_Induced_Angina" required>
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+            <span class="error-msg">Please select an option.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="ST_Depression">&#128201; ST Depression (Oldpeak)</label>
+            <input type="number" id="ST_Depression" name="ST_Depression" min="0" max="10" value="1.0" step="0.1" required>
+            <span class="hint">Induced by exercise</span>
+            <span class="error-msg">Please enter a valid value.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="ST_Slope">&#128201; Slope of Peak ST Segment</label>
+            <select id="ST_Slope" name="ST_Slope" required>
+              <option value="0" selected>Upsloping</option>
+              <option value="1">Flat</option>
+              <option value="2">Downsloping</option>
+            </select>
+            <span class="error-msg">Please select an option.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Major_Vessels">&#129717; Number of Major Vessels</label>
+            <select id="Major_Vessels" name="Major_Vessels" required>
+              <option value="0" selected>0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+            <span class="hint">Colored by fluoroscopy</span>
+            <span class="error-msg">Please select an option.</span>
+          </div>
+
+          <div class="field" data-field>
+            <label for="Thalassemia">&#129502; Thalassemia</label>
+            <select id="Thalassemia" name="Thalassemia" required>
+              <option value="0" selected>Normal</option>
+              <option value="1">Fixed Defect</option>
+              <option value="2">Reversible Defect</option>
+              <option value="3">Unknown</option>
+            </select>
+            <span class="error-msg">Please select an option.</span>
+          </div>
+
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn btn-primary">
+            <span class="spinner"></span>
+            <span class="btn-label">&#128269; Predict Heart Disease</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+venv/
+flaskenv/
+__pycache__/
+*.pyc
+.git/
+.gitignore
+README.txt

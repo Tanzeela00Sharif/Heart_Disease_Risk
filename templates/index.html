@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Disease Prediction | AI Healthcare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-inner">
+    <a href="{{ url_for('landing') }}" class="nav-logo">
+      <span class="logo-icon">&#10084;</span>
+      Heart Disease Prediction
+    </a>
+    <div class="nav-links">
+      <a href="{{ url_for('landing') }}">Home</a>
+      <a href="{{ url_for('predict_form') }}">Prediction</a>
+      <a href="#about">About</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="hero-eyebrow fade-up">&#9889; AI-Powered Cardiac Screening</span>
+      <h1 class="fade-up d1">Predict Your <span>Heart Disease</span> Risk</h1>
+      <p class="subhead fade-up d2">Analyze your health indicators using artificial intelligence and machine learning to estimate your heart disease risk in seconds.</p>
+      <div class="hero-actions fade-up d3">
+        <a href="{{ url_for('predict_form') }}" class="btn btn-primary">&#10003; Check Disease Risk</a>
+        <a href="#about" class="btn btn-secondary">Learn More</a>
+      </div>
+      <div class="hero-trust fade-up d4">
+        <div class="trust-item"><strong>13</strong>Clinical Parameters</div>
+        <div class="trust-item"><strong>&lt;1s</strong>Prediction Time</div>
+        <div class="trust-item"><strong>100%</strong>Private &amp; Local</div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="heart-glow"></div>
+      <div class="particle p1">&#129502;</div>
+      <div class="particle p2">&#128137;</div>
+      <div class="particle p3">&#10084;&#65039;</div>
+      <div class="particle p4">&#9877;&#65039;</div>
+      <div class="particle p5">&#128200;</div>
+      <div class="heart-shadow"></div>
+      <div class="heart-3d-wrap">
+        <img src="{{ url_for('static', filename='images/heart.png') }}"
+             alt="3D anatomical human heart illustration representing AI-powered heart disease prediction.">
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="features" id="about">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why This Platform</span>
+      <h2>Built for trust, powered by AI</h2>
+      <p>A clinically-informed screening tool that turns routine health metrics into an instant, data-driven risk estimate.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#10084;&#65039;</div>
+        <h3>AI Powered Prediction</h3>
+        <p>High accuracy machine learning model trained on real medical data.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#129658;</div>
+        <h3>Health Risk Analysis</h3>
+        <p>Evaluates 13 clinical parameters to estimate heart disease risk.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#9889;</div>
+        <h3>Instant Results</h3>
+        <p>Receive your prediction immediately after submitting your information.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128274;</div>
+        <h3>Secure &amp; Private</h3>
+        <p>No personal information is stored permanently on our servers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <strong>Heart Disease Prediction System</strong><br>
+    Powered by Flask &amp; Machine Learning
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
